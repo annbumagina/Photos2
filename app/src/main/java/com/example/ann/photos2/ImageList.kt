@@ -127,6 +127,7 @@ class ImageList: Fragment() {
             links.clear()
             description.clear()
             ids.clear()
+            adapter.clear()
             if (c.moveToFirst())
             {
                 val idColIndex = c.getColumnIndex("id")
@@ -154,6 +155,7 @@ class ImageList: Fragment() {
             links = savedInstanceState.getStringArrayList(EXTRA_URL)
             description = savedInstanceState.getStringArrayList(EXTRA_DESC)
             ids = savedInstanceState.getIntegerArrayList(EXTRA_IDS)
+            adapter.clear()
             for (i in 0 .. title.size - 1) {
                 adapter.setElement(i, title[i])
             }
@@ -178,6 +180,7 @@ class ImageList: Fragment() {
         links.clear()
         description.clear()
         ids.clear()
+        adapter.clear()
         for (i in 0 .. items.size - 1) {
             links.add(items[i].media.m.substring(0, items[i].media.m.length - 5) + "c.jpg")
             description.add(items[i].tags)

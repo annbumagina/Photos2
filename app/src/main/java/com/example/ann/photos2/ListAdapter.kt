@@ -24,17 +24,17 @@ class ListAdapter(val onClick: (Int) -> Any): RecyclerView.Adapter<ListAdapter.M
         return items.size
     }
 
-    fun setElement(p0: Int, p1: String) {
-        if (p0 == 0 && items.size > 0) {
+    fun clear() {
+        if (items.size > 0) {
             val old = items.size
             items.clear()
-            items.add(p1)
-            notifyItemRangeRemoved(1, old - 1)
-            notifyItemChanged(0)
-        } else {
-            items.add(p1)
-            notifyItemInserted(p0)
+            notifyItemRangeRemoved(0, old)
         }
+    }
+
+    fun setElement(p0: Int, p1: String) {
+        items.add(p1)
+        notifyItemInserted(p0)
     }
 
     override fun onBindViewHolder(p0: MyViewHolder, p1: Int) {
